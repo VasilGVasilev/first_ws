@@ -17,14 +17,14 @@
             // function for the button
             function submitChannel() {
                 //extract value
-                const channelValue = document.querySelector('.channel-input').value;
+                const channelURL = document.querySelector('.channel-input').value;
                 //send value to server
                 fetch('http://localhost:5500/creators', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify({channelValue})
+                    body: JSON.stringify({channelURL})
                 })
             }
             //function to create creators' list
