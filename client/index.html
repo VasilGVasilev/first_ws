@@ -12,5 +12,52 @@
         <input class='channel-input' type='text' placeholder="paste Youtube url"/>
         <button class='submit' onclick="submitChannel()">submit</button>
         <div class="container"></div>
+
+        <script>
+            // function for the button
+            function submitChannel() {
+                //extract value
+                const channelValue = document.querySelector('.channel-input').value;
+                //send value to server
+                fetch('http://localhost:5500/creators', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({channelValue})
+                })
+            }
+            //function to create creators' list
+            function newElem(type, attrs={}) {
+                const elem = document.createElement(type);
+                for (let attr in attrs) {
+                    const value = attrs[attr];
+                    if (attr == 'innerText') elem.innerText = value;
+                    else elem.setAttribute(attr, value);
+                }
+                return elem;
+            }
+
+            //list of creators
+
+            async function loadCreators() {
+                
+                const res = await fetch('http://localhost:5500/creators');
+                const creators = await res.json();
+
+                const ctr = document.querySelector('.container');
+
+                creators.forEach(creator => {
+                    const card = newElem('div', {class: 'card'});
+                    const title = newElem('h1', {innerText: creator.name});
+                    const img = newElem('img', {src: creator.img});
+                    card.appendChild(title);
+                    card.appendChild(img);
+                    ctr.appendChild(card);
+                })
+            }
+
+            loadCreators();
+        </script>
     </body>
 </html>
