@@ -1,4 +1,8 @@
 test_for_gitignore.txt
+node_modules/
+
+#gitignore work for all files/directories in the directory it is placed and
+#all underneath it "treewise" XD
 
 # Compiled source #
 ###################
