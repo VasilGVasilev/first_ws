@@ -18,7 +18,8 @@
             // function for the button
             function submitJob() {
                 //extract value
-                const jobName = document.querySelector('.channel-input').value;
+                const typedWord = document.querySelector('.channel-input').value;
+                const jobName = 'https://dev.bg/?s=' + typedWord + '&post_type=job_listing'
                 //send value to server
                 fetch('http://localhost:5500/jobs', {
                     method: 'POST',
@@ -58,8 +59,8 @@
                     ctr.appendChild(card);
                 })
             }
-
             loadJobs();
+            
         </script>
     </body>
 </html>

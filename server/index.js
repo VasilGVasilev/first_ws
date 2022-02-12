@@ -30,8 +30,13 @@ app.use(function(req,res,next) {
 // })
 //POST needs the body-parser lib
 app.post('/jobs', async (req, res) => {
-    console.log(req.body)
+    console.log(Object.values(req.body)) //Object.values to exract key:value<-- only
     //todo: Scrape channel
+    const s = JSON.stringify(Object.values(req.body))
+    const m = s.replace(/[\[\]']+/g,'');
+    console.log(m);
+    const jobDB = await require('./scrapers.js');
+    console.log(await jobDB(m))
     //todo: Add to DB
     res.send("success")
   })
