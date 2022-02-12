@@ -8,8 +8,8 @@ async function scrapeJob(url) {
     const el = await page.$('#primary > div > div.search-heading.text-center > h1 > span.one-of-all-heading');
     const text = await el.getProperty('textContent');
     const name = await text.jsonValue();
-
-    return {name};    
+    
+    return {name};
     browser.close();
     
   };
