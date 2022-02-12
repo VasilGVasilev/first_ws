@@ -17,17 +17,19 @@ app.use(function(req,res,next) {
 
 //check the port number on the IDE
 //async for DB, scrapper interaction
-app.get('/creators', async (req, res) => {
-    const creators = [
-        {name:'one', img:'html://'},
-        {name:'two', img:'html://'},
-        {name:'three', img:'html://'}
-    ]
-    //todo: GET from DB
-    res.send(creators)
-})
+
+//remove get for now
+// app.get('/jobs', async (req, res) => {
+//     const jobs = [
+//         {name:'one', img:'html://'},
+//         {name:'two', img:'html://'},
+//         {name:'three', img:'html://'}
+//     ]
+//     //todo: GET from DB
+//     res.send(jobs)
+// })
 //POST needs the body-parser lib
-app.post('/creators', async (req, res) => {
+app.post('/jobs', async (req, res) => {
     console.log(req.body)
     //todo: Scrape channel
     //todo: Add to DB
