@@ -9,11 +9,11 @@ async function scrapeJob(url) {
     const text = await el.getProperty('textContent');
     const name = await text.jsonValue();
 
-    
-    return {name};
+    return {name};    
     browser.close();
     
   };
 
 //how to import jobname set in index to url here
+
 scrapeJob('https://dev.bg/?s=' + jobName + '&post_type=job_listing')  

@@ -13,7 +13,8 @@
         <button class='submit' onclick="submitJob()">submit</button>
         <div class="container"></div>
 
-        <script>
+        <script type="module" src="main.js">
+            
             // function for the button
             function submitJob() {
                 //extract value
@@ -27,6 +28,7 @@
                     body: JSON.stringify({jobName})
                 })
             }
+
             //function to create creators' list
             function newElem(type, attrs={}) {
                 const elem = document.createElement(type);
