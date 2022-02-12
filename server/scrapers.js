@@ -1,6 +1,6 @@
 const puppeteer = require('puppeteer');
 
-async function scrapeChannel(url) {
+async function scrapeJob(url) {
     const browser = await puppeteer.launch({headless: false});
     const page = await browser.newPage();
     await page.goto(url);
@@ -10,10 +10,10 @@ async function scrapeChannel(url) {
     const name = await text.jsonValue();
 
     
-    console.log({name});
     return {name};
     browser.close();
     
   };
 
-scrapeChannel('https://dev.bg/?s=junior&post_type=job_listing')  
+//how to import jobname set in index to url here
+scrapeJob('https://dev.bg/?s=' + jobName + '&post_type=job_listing')  
