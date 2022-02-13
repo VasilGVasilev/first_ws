@@ -1,9 +1,11 @@
 const express = require('express')
 const app = express()
 const port = 5500
+const scrapers = require('./scrapers')
 
 //import 
 const bodyParser = require('body-parser');
+const scrapeJob = require('./scrapers');
 
 //create middleware to extract json from the body of our req
 app.use(bodyParser.json())
@@ -30,16 +32,14 @@ app.use(function(req,res,next) {
 // })
 //POST needs the body-parser lib
 app.post('/jobs', async (req, res) => {
-    console.log(Object.values(req.body)) //Object.values to exract key:value<-- only
+    //console.log(req.body.jobName) //Object.values to exract key:value<-- only
     //todo: Scrape channel
-    const s = JSON.stringify(Object.values(req.body))
-    const m = s.replace(/[\[\]']+/g,'');
-    console.log(m);
-    const jobDB = await require('./scrapers.js');
-    console.log(await jobDB(m))
+    const jobDB = await scrapers.scrapeJob(req.body.jobName);//dont stringify, but use the value this way
+    //console.log(jobDB); //but extract the value key:value in this was
     //todo: Add to DB
     res.send("success")
   })
+
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
