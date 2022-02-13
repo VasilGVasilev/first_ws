@@ -1,5 +1,5 @@
 const puppeteer = require('puppeteer');
-url = "https://dev.bg/?s=csd&post_type=job_listing"
+
 async function scrapeJob(url) {
     const browser = await puppeteer.launch({headless: false});
     const page = await browser.newPage();

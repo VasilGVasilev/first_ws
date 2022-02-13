@@ -33,11 +33,10 @@ app.use(function(req,res,next) {
 //POST needs the body-parser lib
 app.post('/jobs', async (req, res) => {
     //console.log(req.body.jobName) //Object.values to exract key:value<-- only
-    //todo: Scrape channel
     const jobDB = await scrapers.scrapeJob(req.body.jobName);//dont stringify, but use the value this way
-    //console.log(jobDB); //but extract the value key:value in this was
+    console.log(jobDB); //but extract the value key:value in this was
     //todo: Add to DB
-    res.send("success")
+    res.send(jobDB)
   })
 
 
